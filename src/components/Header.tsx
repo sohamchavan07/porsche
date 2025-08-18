@@ -11,12 +11,10 @@ const Header = () => {
               <a href="#models" className="text-foreground/80 hover:text-foreground transition-colors">Models</a>
               <a href="#performance" className="text-foreground/80 hover:text-foreground transition-colors">Performance</a>
               <a href="#heritage" className="text-foreground/80 hover:text-foreground transition-colors">Heritage</a>
-              <a href="#contact" className="text-foreground/80 hover:text-foreground transition-colors">Contact</a>
             </div>
           </div>
           <div className="flex items-center space-x-4">
             <Button variant="ghost" className="hidden md:inline-flex">Configure</Button>
-            <Button variant="default" className="bg-primary hover:bg-primary/90">Find Dealer</Button>
           </div>
         </nav>
       </div>

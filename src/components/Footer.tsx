@@ -2,7 +2,7 @@ import { Button } from "@/components/ui/button";
 
 const Footer = () => {
   return (
-    <footer id="contact" className="bg-secondary/20 border-t border-border/50 py-16 px-6">
+    <footer className="bg-secondary/20 border-t border-border/50 py-16 px-6">
       <div className="container mx-auto max-w-7xl">
         <div className="grid md:grid-cols-4 gap-8 mb-12">
           <div className="space-y-4">
@@ -11,8 +11,6 @@ const Footer = () => {
               Experience the pinnacle of automotive engineering and racing heritage.
             </p>
             <div className="flex space-x-4">
-              <Button variant="outline" size="sm">Find Dealer</Button>
-              <Button size="sm">Test Drive</Button>
             </div>
           </div>
           
@@ -45,7 +43,6 @@ const Footer = () => {
               <li><a href="#" className="hover:text-foreground transition-colors">Careers</a></li>
               <li><a href="#" className="hover:text-foreground transition-colors">News</a></li>
               <li><a href="#" className="hover:text-foreground transition-colors">Motorsport</a></li>
-              <li><a href="#" className="hover:text-foreground transition-colors">Contact</a></li>
             </ul>
           </div>
         </div>

@@ -27,9 +27,7 @@ const Hero = () => {
             <Button size="lg" className="bg-primary hover:bg-primary/90 text-primary-foreground px-8 py-6 text-lg">
               Explore Models
             </Button>
-            <Button size="lg" variant="outline" className="border-foreground/20 hover:bg-foreground/10 px-8 py-6 text-lg">
-              Book Test Drive
-            </Button>
+            
           </div>
         </div>
       </div>

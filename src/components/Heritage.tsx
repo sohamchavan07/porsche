@@ -1,0 +1,412 @@
+import { useState } from "react";
+import { Card, CardContent } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
+import { ChevronLeft, ChevronRight, Calendar, Trophy, Car, Zap, Star, Award } from "lucide-react";
+
+interface HeritageMilestone {
+  year: number;
+  title: string;
+  description: string;
+  category: "foundation" | "racing" | "innovation" | "design";
+  icon: React.ReactNode;
+  highlight: string;
+  details: string[];
+  imagePlaceholder: string;
+  achievements: string[];
+  hasImage?: boolean;
+}
+
+const heritageData: HeritageMilestone[] = [
+  {
+    year: 1948,
+    title: "356 'No. 1' Roadster",
+    description: "Porsche's first sports car, born in Austria, marks the true beginning of the brand.",
+    category: "foundation",
+    icon: <Car className="w-5 h-5" />,
+    highlight: "The Beginning",
+    details: [
+      "First Porsche sports car",
+      "Built in Gmünd, Austria",
+      "Aluminum body construction",
+      "1.1L flat-four engine"
+    ],
+    imagePlaceholder: "356 Roadster",
+    achievements: ["First Porsche", "Austrian Heritage", "Lightweight Design"],
+    hasImage: true
+  },
+  {
+    year: 1963,
+    title: "911 Debut",
+    description: "Designed by F. A. Porsche, the 911 has evolved technically while retaining its signature silhouette.",
+    category: "design",
+    icon: <Car className="w-5 h-5" />,
+    highlight: "Icon Born",
+    details: [
+      "Designed by Ferry Porsche",
+      "Evolutionary design philosophy",
+      "Rear-engine layout",
+      "Timeless silhouette"
+    ],
+    imagePlaceholder: "911 Classic",
+    achievements: ["Timeless Design", "Evolutionary", "Iconic Silhouette"]
+  },
+  {
+    year: 1970,
+    title: "917 Le Mans Victory",
+    description: "The 917 secured Porsche's first overall win at Le Mans, cementing motorsport legacy.",
+    category: "racing",
+    icon: <Trophy className="w-5 h-5" />,
+    highlight: "Le Mans Glory",
+    details: [
+      "First overall Le Mans win",
+      "Flat-12 engine",
+      "Revolutionary aerodynamics",
+      "Motorsport dominance begins"
+    ],
+    imagePlaceholder: "917 Le Mans",
+    achievements: ["Le Mans Winner", "Motorsport Legend", "Aerodynamic Innovation"]
+  },
+  {
+    year: 1974,
+    title: "911 Turbo",
+    description: "Porsche's first production turbocharged car—landmark in performance and road legality.",
+    category: "innovation",
+    icon: <Zap className="w-5 h-5" />,
+    highlight: "Turbo Revolution",
+    details: [
+      "First production turbo",
+      "260 horsepower",
+      "Road-legal performance",
+      "Performance icon created"
+    ],
+    imagePlaceholder: "911 Turbo",
+    achievements: ["Turbo Pioneer", "Performance Icon", "Road Legal"]
+  },
+  {
+    year: 1985,
+    title: "959 'Wundercar'",
+    description: "Breakthrough AWD, adaptive suspension, and turbo tech, with Paris–Dakar rally highlights.",
+    category: "innovation",
+    icon: <Zap className="w-5 h-5" />,
+    highlight: "Technological Marvel",
+    details: [
+      "All-wheel drive system",
+      "Adaptive suspension",
+      "Twin-turbo technology",
+      "Dakar rally success"
+    ],
+    imagePlaceholder: "959 Wundercar",
+    achievements: ["AWD Pioneer", "Dakar Winner", "Tech Marvel"]
+  },
+  {
+    year: 2019,
+    title: "Heritage Design Strategy",
+    description: "Porsche selectively revives classic colors, patterns, and traditional interior fabrics.",
+    category: "design",
+    icon: <Car className="w-5 h-5" />,
+    highlight: "Heritage Revival",
+    details: [
+      "Classic color revival",
+      "Pepita tartan patterns",
+      "Corduroy interiors",
+      "Modern heritage fusion"
+    ],
+    imagePlaceholder: "Heritage Design",
+    achievements: ["Classic Revival", "Pattern Heritage", "Modern Fusion"]
+  },
+  {
+    year: 2023,
+    title: "Vision 357",
+    description: "A modern, celebratory reinterpretation of the original 356 for its 75th anniversary.",
+    category: "design",
+    icon: <Car className="w-5 h-5" />,
+    highlight: "75th Anniversary",
+    details: [
+      "356 reinterpretation",
+      "Modern technology",
+      "Heritage celebration",
+      "Future meets past"
+    ],
+    imagePlaceholder: "Vision 357",
+    achievements: ["75th Anniversary", "Future Vision", "Heritage Celebration"]
+  }
+];
+
+const Heritage = () => {
+  const [activeMilestone, setActiveMilestone] = useState(0);
+
+  const nextMilestone = () => {
+    setActiveMilestone((prev) => (prev + 1) % heritageData.length);
+  };
+
+  const prevMilestone = () => {
+    setActiveMilestone((prev) => (prev - 1 + heritageData.length) % heritageData.length);
+  };
+
+  const goToMilestone = (index: number) => {
+    setActiveMilestone(index);
+  };
+
+  const currentMilestone = heritageData[activeMilestone];
+
+  return (
+    <section id="heritage" className="py-24 px-6 relative overflow-hidden">
+      {/* Background Pattern */}
+      <div className="absolute inset-0 bg-gradient-to-br from-secondary/20 to-background/50" />
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_80%,hsl(var(--porsche-red)/0.1),transparent_50%)]" />
+      
+      <div className="container mx-auto max-w-7xl relative z-10">
+        {/* Hero Intro */}
+        <div className="text-center mb-20">
+          <Badge variant="outline" className="mb-6 px-4 py-2 border-accent/30 text-accent">
+            <Calendar className="w-4 h-4 mr-2" />
+            Since 1948
+          </Badge>
+          <h2 className="text-4xl md:text-6xl font-bold mb-6">
+            Heritage: Where <span className="gradient-text">Innovation</span> Meets Emotion
+          </h2>
+          <p className="text-xl text-muted-foreground max-w-4xl mx-auto leading-relaxed">
+            A celebration of Porsche's origin, design evolution, and landmark engineering—from the first 356 roadster to rally-bred hypercars.
+          </p>
+        </div>
+
+        {/* Interactive Timeline */}
+        <div className="mb-16">
+          <div className="flex items-center justify-between mb-8">
+            <h3 className="text-2xl font-semibold">Timeline & Highlights</h3>
+            <div className="flex gap-2">
+              <Button
+                variant="outline"
+                size="sm"
+                onClick={prevMilestone}
+                className="hover:bg-accent hover:text-accent-foreground"
+              >
+                <ChevronLeft className="w-4 h-4" />
+              </Button>
+              <Button
+                variant="outline"
+                size="sm"
+                onClick={nextMilestone}
+                className="hover:bg-accent hover:text-accent-foreground"
+              >
+                <ChevronRight className="w-4 h-4" />
+              </Button>
+            </div>
+          </div>
+
+          {/* Timeline Navigation */}
+          <div className="flex justify-center mb-12">
+            <div className="flex gap-4 overflow-x-auto pb-4 scrollbar-hide">
+              {heritageData.map((milestone, index) => (
+                <button
+                  key={milestone.year}
+                  onClick={() => goToMilestone(index)}
+                  className={`flex flex-col items-center gap-2 min-w-[80px] transition-all duration-300 ${
+                    index === activeMilestone
+                      ? "text-accent scale-110"
+                      : "text-muted-foreground hover:text-foreground"
+                  }`}
+                >
+                  <div className={`w-3 h-3 rounded-full transition-all duration-300 ${
+                    index === activeMilestone
+                      ? "bg-accent scale-125"
+                      : "bg-border hover:bg-muted-foreground"
+                  }`} />
+                  <span className="text-sm font-medium">{milestone.year}</span>
+                </button>
+              ))}
+            </div>
+          </div>
+
+          {/* Active Milestone Display */}
+          <Card className="luxury-card max-w-6xl mx-auto">
+            <CardContent className="p-8">
+              <div className="grid md:grid-cols-2 gap-8 items-center">
+                <div className="space-y-6">
+                  <div className="flex items-center gap-3">
+                    <div className="p-2 rounded-lg bg-accent/10 border border-accent/20">
+                      {currentMilestone.icon}
+                    </div>
+                    <Badge variant="secondary" className="capitalize">
+                      {currentMilestone.category}
+                    </Badge>
+                  </div>
+                  
+                  <div>
+                    <h4 className="text-3xl font-bold mb-2">{currentMilestone.title}</h4>
+                    <p className="text-muted-foreground leading-relaxed mb-4">
+                      {currentMilestone.description}
+                    </p>
+                    <div className="inline-block px-4 py-2 bg-gradient-to-r from-accent/10 to-accent/5 border border-accent/20 rounded-lg">
+                      <span className="text-accent font-semibold">{currentMilestone.highlight}</span>
+                    </div>
+                  </div>
+
+                  <div className="space-y-2">
+                    {currentMilestone.details.map((detail, index) => (
+                      <div key={index} className="flex items-center gap-2 text-sm text-muted-foreground">
+                        <div className="w-1.5 h-1.5 rounded-full bg-accent/60" />
+                        {detail}
+                      </div>
+                    ))}
+                  </div>
+
+                  {/* Achievements */}
+                  <div className="pt-4">
+                    <div className="flex flex-wrap gap-2">
+                      {currentMilestone.achievements.map((achievement, index) => (
+                        <Badge key={index} variant="outline" className="text-xs">
+                          <Star className="w-3 h-3 mr-1" />
+                          {achievement}
+                        </Badge>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+
+                <div className="relative">
+                  {currentMilestone.hasImage && currentMilestone.year === 1948 ? (
+                    <div className="aspect-square bg-gradient-to-br from-secondary to-background rounded-lg border border-border/50 overflow-hidden">
+                      <div className="w-full h-full bg-gradient-to-br from-gray-100 to-gray-200 flex items-center justify-center relative">
+                        {/* Porsche 356 "No. 1" Roadster Image Placeholder */}
+                        <div className="text-center space-y-4 p-6">
+                          <div className="w-32 h-32 mx-auto bg-gradient-to-br from-silver-300 to-silver-400 rounded-full flex items-center justify-center shadow-lg">
+                            <Car className="w-16 h-16 text-silver-600" />
+                          </div>
+                          <div className="text-4xl font-bold text-silver-600 mb-2">1948</div>
+                          <div className="text-xl text-silver-700 font-semibold">356 "No. 1" Roadster</div>
+                          <div className="text-sm text-silver-600">Porsche's First Sports Car</div>
+                          <div className="text-xs text-silver-500 mt-2">
+                            Silver-grey exterior • Red interior • Austrian heritage
+                          </div>
+                        </div>
+                        {/* Decorative elements */}
+                        <div className="absolute top-4 right-4 w-8 h-8 bg-accent/20 rounded-full flex items-center justify-center">
+                          <Star className="w-4 h-4 text-accent" />
+                        </div>
+                        <div className="absolute bottom-4 left-4 w-6 h-6 bg-accent/10 rounded-full"></div>
+                      </div>
+                    </div>
+                  ) : (
+                    <div className="aspect-square bg-gradient-to-br from-secondary to-background rounded-lg border border-border/50 flex items-center justify-center overflow-hidden">
+                      <div className="text-center space-y-4 p-6">
+                        <div className="w-24 h-24 mx-auto bg-gradient-to-br from-accent/20 to-accent/10 rounded-full flex items-center justify-center">
+                          <Car className="w-12 h-12 text-accent/40" />
+                        </div>
+                        <div className="text-6xl font-bold text-accent/20">{currentMilestone.year}</div>
+                        <div className="text-lg text-muted-foreground font-medium">{currentMilestone.imagePlaceholder}</div>
+                        <div className="text-sm text-muted-foreground/60">Porsche Heritage</div>
+                      </div>
+                    </div>
+                  )}
+                  <div className="absolute -top-2 -right-2 w-16 h-16 bg-gradient-to-br from-accent to-accent/60 rounded-full flex items-center justify-center text-white font-bold text-sm shadow-lg">
+                    {currentMilestone.year}
+                  </div>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+        </div>
+
+        {/* Tech & Design Deep Dives */}
+        <div className="grid md:grid-cols-2 gap-8 mb-16">
+          <Card className="luxury-card group hover:shadow-[var(--shadow-luxury)] transition-all duration-500">
+            <CardContent className="p-6">
+              <div className="flex items-center gap-3 mb-4">
+                <div className="p-2 rounded-lg bg-accent/10 group-hover:bg-accent/20 transition-colors">
+                  <Zap className="w-6 h-6 text-accent" />
+                </div>
+                <h4 className="text-xl font-semibold">Supercar Tech</h4>
+              </div>
+              <p className="text-muted-foreground mb-4">
+                Highlight the 959's innovations: AWD, active aero, twin turbo technology and motorsport results.
+              </p>
+              <div className="space-y-2">
+                <div className="flex items-center gap-2 text-sm">
+                  <div className="w-2 h-2 rounded-full bg-accent" />
+                  All-Wheel Drive System
+                </div>
+                <div className="flex items-center gap-2 text-sm">
+                  <div className="w-2 h-2 rounded-full bg-accent" />
+                  Adaptive Suspension
+                </div>
+                <div className="flex items-center gap-2 text-sm">
+                  <div className="w-2 h-2 rounded-full bg-accent" />
+                  Twin-Turbo Technology
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+
+          <Card className="luxury-card group hover:shadow-[var(--shadow-luxury)] transition-all duration-500">
+            <CardContent className="p-6">
+              <div className="flex items-center gap-3 mb-4">
+                <div className="p-2 rounded-lg bg-accent/10 group-hover:bg-accent/20 transition-colors">
+                  <Car className="w-6 h-6 text-accent" />
+                </div>
+                <h4 className="text-xl font-semibold">Design Homage</h4>
+              </div>
+              <p className="text-muted-foreground mb-4">
+                Detail how Porsche brings back vintage interior fabrics and colors via Heritage Design packages.
+              </p>
+              <div className="space-y-2">
+                <div className="flex items-center gap-2 text-sm">
+                  <div className="w-2 h-2 rounded-full bg-accent" />
+                  Classic Color Revival
+                </div>
+                <div className="flex items-center gap-2 text-sm">
+                  <div className="w-2 h-2 rounded-full bg-accent" />
+                  Pepita Tartan Patterns
+                </div>
+                <div className="flex items-center gap-2 text-sm">
+                  <div className="w-2 h-2 rounded-full bg-accent" />
+                  Corduroy Interiors
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+        </div>
+
+        {/* Heritage Stats */}
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-16">
+          <div className="text-center p-6 rounded-lg bg-gradient-to-br from-secondary/50 to-background/50 border border-border/30">
+            <div className="text-3xl font-bold text-accent mb-2">75+</div>
+            <div className="text-sm text-muted-foreground">Years of Excellence</div>
+          </div>
+          <div className="text-center p-6 rounded-lg bg-gradient-to-br from-secondary/50 to-background/50 border border-border/30">
+            <div className="text-3xl font-bold text-accent mb-2">19</div>
+            <div className="text-sm text-muted-foreground">Le Mans Victories</div>
+          </div>
+          <div className="text-center p-6 rounded-lg bg-gradient-to-br from-secondary/50 to-background/50 border border-border/30">
+            <div className="text-3xl font-bold text-accent mb-2">1M+</div>
+            <div className="text-sm text-muted-foreground">911s Produced</div>
+          </div>
+          <div className="text-center p-6 rounded-lg bg-gradient-to-br from-secondary/50 to-background/50 border border-border/30">
+            <div className="text-3xl font-bold text-accent mb-2">∞</div>
+            <div className="text-sm text-muted-foreground">Innovation Legacy</div>
+          </div>
+        </div>
+
+        {/* Call to Action */}
+        <div className="text-center">
+          <div className="inline-flex flex-col sm:flex-row gap-4 items-center">
+            <Button size="lg" className="bg-accent hover:bg-accent/90 text-accent-foreground shadow-lg">
+              From Heritage to Innovation
+            </Button>
+            <span className="text-muted-foreground">→</span>
+            <Button variant="outline" size="lg" className="hover:bg-accent hover:text-accent-foreground">
+              Discover Models
+            </Button>
+            <span className="text-muted-foreground">→</span>
+            <Button variant="outline" size="lg" className="hover:bg-accent hover:text-accent-foreground">
+              Explore Strategy
+            </Button>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default Heritage;
