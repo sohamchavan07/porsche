@@ -1,4 +1,5 @@
 import { useState } from "react";
+import heroImage from "@/assets/porsche-hero.jpg";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -15,6 +16,8 @@ interface HeritageMilestone {
   imagePlaceholder: string;
   achievements: string[];
   hasImage?: boolean;
+  imageSrc?: string;
+  imageAlt?: string;
 }
 
 const heritageData: HeritageMilestone[] = [
@@ -33,7 +36,9 @@ const heritageData: HeritageMilestone[] = [
     ],
     imagePlaceholder: "356 Roadster",
     achievements: ["First Porsche", "Austrian Heritage", "Lightweight Design"],
-    hasImage: true
+    hasImage: true,
+    imageSrc: "/heritage/356 roadster.jpeg",
+    imageAlt: "Porsche 356 'No. 1' Roadster"
   },
   {
     year: 1963,
@@ -49,7 +54,10 @@ const heritageData: HeritageMilestone[] = [
       "Timeless silhouette"
     ],
     imagePlaceholder: "911 Classic",
-    achievements: ["Timeless Design", "Evolutionary", "Iconic Silhouette"]
+    achievements: ["Timeless Design", "Evolutionary", "Iconic Silhouette"],
+    hasImage: true,
+    imageSrc: "/heritage/911 debute.jpeg",
+    imageAlt: "Porsche 911 Debut"
   },
   {
     year: 1970,
@@ -64,8 +72,11 @@ const heritageData: HeritageMilestone[] = [
       "Revolutionary aerodynamics",
       "Motorsport dominance begins"
     ],
-    imagePlaceholder: "917 Le Mans",
-    achievements: ["Le Mans Winner", "Motorsport Legend", "Aerodynamic Innovation"]
+    imagePlaceholder: "917 Le Mans Victory",
+    achievements: ["Le Mans Winner", "Motorsport Legend", "Aerodynamic Innovation"],
+    hasImage: true,
+    imageSrc: "/heritage/917 Le Mans Victory.jpeg",
+    imageAlt: "917 Le Mans Victory"
   },
   {
     year: 1974,
@@ -81,7 +92,10 @@ const heritageData: HeritageMilestone[] = [
       "Performance icon created"
     ],
     imagePlaceholder: "911 Turbo",
-    achievements: ["Turbo Pioneer", "Performance Icon", "Road Legal"]
+    achievements: ["Turbo Pioneer", "Performance Icon", "Road Legal"],
+    hasImage: true,
+    imageSrc: "/heritage/911 turbo.jpeg",
+    imageAlt: "911 Turbo"
   },
   {
     year: 1985,
@@ -97,7 +111,10 @@ const heritageData: HeritageMilestone[] = [
       "Dakar rally success"
     ],
     imagePlaceholder: "959 Wundercar",
-    achievements: ["AWD Pioneer", "Dakar Winner", "Tech Marvel"]
+    achievements: ["AWD Pioneer", "Dakar Winner", "Tech Marvel"],
+    hasImage: true,
+    imageSrc: "/heritage/959 'Wundercar' .jpeg",
+    imageAlt: "959 'Wundercar'"
   },
   {
     year: 2019,
@@ -129,7 +146,10 @@ const heritageData: HeritageMilestone[] = [
       "Future meets past"
     ],
     imagePlaceholder: "Vision 357",
-    achievements: ["75th Anniversary", "Future Vision", "Heritage Celebration"]
+    achievements: ["75th Anniversary", "Future Vision", "Heritage Celebration"],
+    hasImage: true,
+    imageSrc: "/heritage/Vision 357 .jpeg",
+    imageAlt: "Vision 357"
   }
 ];
 
@@ -266,27 +286,21 @@ const Heritage = () => {
                 </div>
 
                 <div className="relative">
-                  {currentMilestone.hasImage && currentMilestone.year === 1948 ? (
+                  {currentMilestone.hasImage ? (
                     <div className="aspect-square bg-gradient-to-br from-secondary to-background rounded-lg border border-border/50 overflow-hidden">
-                      <div className="w-full h-full bg-gradient-to-br from-gray-100 to-gray-200 flex items-center justify-center relative">
-                        {/* Porsche 356 "No. 1" Roadster Image Placeholder */}
-                        <div className="text-center space-y-4 p-6">
-                          <div className="w-32 h-32 mx-auto bg-gradient-to-br from-silver-300 to-silver-400 rounded-full flex items-center justify-center shadow-lg">
-                            <Car className="w-16 h-16 text-silver-600" />
-                          </div>
-                          <div className="text-4xl font-bold text-silver-600 mb-2">1948</div>
-                          <div className="text-xl text-silver-700 font-semibold">356 "No. 1" Roadster</div>
-                          <div className="text-sm text-silver-600">Porsche's First Sports Car</div>
-                          <div className="text-xs text-silver-500 mt-2">
-                            Silver-grey exterior • Red interior • Austrian heritage
-                          </div>
-                        </div>
-                        {/* Decorative elements */}
-                        <div className="absolute top-4 right-4 w-8 h-8 bg-accent/20 rounded-full flex items-center justify-center">
-                          <Star className="w-4 h-4 text-accent" />
-                        </div>
-                        <div className="absolute bottom-4 left-4 w-6 h-6 bg-accent/10 rounded-full"></div>
-                      </div>
+                      <img
+                        src={currentMilestone.imageSrc ?? heroImage}
+                        alt={currentMilestone.imageAlt ?? currentMilestone.title}
+                        className="w-full h-full object-cover"
+                        loading="lazy"
+                        decoding="async"
+                        onError={(e) => {
+                          // Swap to a guaranteed local asset if the public image is missing
+                          if (e.currentTarget.src !== heroImage) {
+                            e.currentTarget.src = heroImage;
+                          }
+                        }}
+                      />
                     </div>
                   ) : (
                     <div className="aspect-square bg-gradient-to-br from-secondary to-background rounded-lg border border-border/50 flex items-center justify-center overflow-hidden">
