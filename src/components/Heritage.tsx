@@ -3,7 +3,7 @@ import heroImage from "@/assets/porsche-hero.jpg";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { ChevronLeft, ChevronRight, Calendar, Trophy, Car, Zap, Star, Award } from "lucide-react";
+import { ChevronLeft, ChevronRight, Calendar, Trophy, Car, Zap, Star, Award, Sparkles } from "lucide-react";
 
 interface HeritageMilestone {
   year: number;
@@ -94,7 +94,7 @@ const heritageData: HeritageMilestone[] = [
     imagePlaceholder: "911 Turbo",
     achievements: ["Turbo Pioneer", "Performance Icon", "Road Legal"],
     hasImage: true,
-    imageSrc: "/heritage/911 turbo.jpeg",
+    imageSrc: "/heritage/911 Turbo.jpeg",
     imageAlt: "911 Turbo"
   },
   {
@@ -172,18 +172,24 @@ const Heritage = () => {
 
   return (
     <section id="heritage" className="py-24 px-6 relative overflow-hidden">
-      {/* Background Pattern */}
-      <div className="absolute inset-0 bg-gradient-to-br from-secondary/20 to-background/50" />
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_80%,hsl(var(--porsche-red)/0.1),transparent_50%)]" />
+      {/* Enhanced Background Pattern */}
+      <div className="absolute inset-0 bg-gradient-to-br from-secondary/20 via-background/30 to-background/50" />
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_80%,hsl(var(--porsche-red)/0.15),transparent_50%)]" />
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_80%_20%,hsl(var(--accent)/0.1),transparent_50%)]" />
+      
+      {/* Floating Elements */}
+      <div className="absolute top-20 left-10 w-32 h-32 bg-gradient-to-br from-accent/10 to-transparent rounded-full blur-3xl animate-pulse" />
+      <div className="absolute bottom-20 right-10 w-40 h-40 bg-gradient-to-br from-secondary/20 to-transparent rounded-full blur-3xl animate-pulse delay-1000" />
       
       <div className="container mx-auto max-w-7xl relative z-10">
-        {/* Hero Intro */}
+        {/* Enhanced Hero Intro */}
         <div className="text-center mb-20">
-          <Badge variant="outline" className="mb-6 px-4 py-2 border-accent/30 text-accent">
-            <Calendar className="w-4 h-4 mr-2" />
-            Since 1948
-          </Badge>
-          <h2 className="text-4xl md:text-6xl font-bold mb-6">
+          <div className="inline-flex items-center gap-2 mb-6 px-6 py-3 bg-gradient-to-r from-accent/10 to-secondary/10 border border-accent/20 rounded-full backdrop-blur-sm">
+            <Sparkles className="w-4 h-4 text-accent animate-pulse" />
+            <span className="text-accent font-medium">Since 1948</span>
+            <Sparkles className="w-4 h-4 text-accent animate-pulse" />
+          </div>
+          <h2 className="text-4xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-foreground via-accent to-foreground bg-clip-text text-transparent">
             Heritage: Where <span className="gradient-text">Innovation</span> Meets Emotion
           </h2>
           <p className="text-xl text-muted-foreground max-w-4xl mx-auto leading-relaxed">
@@ -191,16 +197,18 @@ const Heritage = () => {
           </p>
         </div>
 
-        {/* Interactive Timeline */}
+        {/* Enhanced Interactive Timeline */}
         <div className="mb-16">
           <div className="flex items-center justify-between mb-8">
-            <h3 className="text-2xl font-semibold">Timeline & Highlights</h3>
+            <h3 className="text-2xl font-semibold bg-gradient-to-r from-foreground to-accent bg-clip-text text-transparent">
+              Timeline & Highlights
+            </h3>
             <div className="flex gap-2">
               <Button
                 variant="outline"
                 size="sm"
                 onClick={prevMilestone}
-                className="hover:bg-accent hover:text-accent-foreground"
+                className="hover:bg-accent hover:text-accent-foreground transition-all duration-300 hover:scale-105"
               >
                 <ChevronLeft className="w-4 h-4" />
               </Button>
@@ -208,14 +216,14 @@ const Heritage = () => {
                 variant="outline"
                 size="sm"
                 onClick={nextMilestone}
-                className="hover:bg-accent hover:text-accent-foreground"
+                className="hover:bg-accent hover:text-accent-foreground transition-all duration-300 hover:scale-105"
               >
                 <ChevronRight className="w-4 h-4" />
               </Button>
             </div>
           </div>
 
-          {/* Timeline Navigation */}
+          {/* Enhanced Timeline Navigation */}
           <div className="flex justify-center mb-12">
             <div className="flex gap-4 overflow-x-auto pb-4 scrollbar-hide">
               {heritageData.map((milestone, index) => (
@@ -230,7 +238,7 @@ const Heritage = () => {
                 >
                   <div className={`w-3 h-3 rounded-full transition-all duration-300 ${
                     index === activeMilestone
-                      ? "bg-accent scale-125"
+                      ? "bg-accent scale-125 shadow-lg shadow-accent/50"
                       : "bg-border hover:bg-muted-foreground"
                   }`} />
                   <span className="text-sm font-medium">{milestone.year}</span>
@@ -239,45 +247,47 @@ const Heritage = () => {
             </div>
           </div>
 
-          {/* Active Milestone Display */}
-          <Card className="luxury-card max-w-6xl mx-auto">
+          {/* Enhanced Active Milestone Display */}
+          <Card className="luxury-card max-w-6xl mx-auto border-0 shadow-2xl bg-gradient-to-br from-background via-secondary/5 to-background backdrop-blur-sm">
             <CardContent className="p-8">
               <div className="grid md:grid-cols-2 gap-8 items-center">
                 <div className="space-y-6">
                   <div className="flex items-center gap-3">
-                    <div className="p-2 rounded-lg bg-accent/10 border border-accent/20">
+                    <div className="p-3 rounded-xl bg-gradient-to-br from-accent/20 to-accent/10 border border-accent/30 shadow-lg">
                       {currentMilestone.icon}
                     </div>
-                    <Badge variant="secondary" className="capitalize">
+                    <Badge variant="secondary" className="capitalize px-3 py-1 text-sm font-medium">
                       {currentMilestone.category}
                     </Badge>
                   </div>
                   
                   <div>
-                    <h4 className="text-3xl font-bold mb-2">{currentMilestone.title}</h4>
-                    <p className="text-muted-foreground leading-relaxed mb-4">
+                    <h4 className="text-3xl font-bold mb-3 bg-gradient-to-r from-foreground to-accent bg-clip-text text-transparent">
+                      {currentMilestone.title}
+                    </h4>
+                    <p className="text-muted-foreground leading-relaxed mb-4 text-lg">
                       {currentMilestone.description}
                     </p>
-                    <div className="inline-block px-4 py-2 bg-gradient-to-r from-accent/10 to-accent/5 border border-accent/20 rounded-lg">
+                    <div className="inline-block px-4 py-2 bg-gradient-to-r from-accent/20 to-accent/10 border border-accent/30 rounded-xl shadow-lg">
                       <span className="text-accent font-semibold">{currentMilestone.highlight}</span>
                     </div>
                   </div>
 
-                  <div className="space-y-2">
+                  <div className="space-y-3">
                     {currentMilestone.details.map((detail, index) => (
-                      <div key={index} className="flex items-center gap-2 text-sm text-muted-foreground">
-                        <div className="w-1.5 h-1.5 rounded-full bg-accent/60" />
+                      <div key={index} className="flex items-center gap-3 text-sm text-muted-foreground">
+                        <div className="w-2 h-2 rounded-full bg-gradient-to-r from-accent to-accent/60 shadow-sm" />
                         {detail}
                       </div>
                     ))}
                   </div>
 
-                  {/* Achievements */}
+                  {/* Enhanced Achievements */}
                   <div className="pt-4">
                     <div className="flex flex-wrap gap-2">
                       {currentMilestone.achievements.map((achievement, index) => (
-                        <Badge key={index} variant="outline" className="text-xs">
-                          <Star className="w-3 h-3 mr-1" />
+                        <Badge key={index} variant="outline" className="text-xs px-3 py-1 border-accent/30 hover:bg-accent/10 transition-colors">
+                          <Star className="w-3 h-3 mr-1 text-accent" />
                           {achievement}
                         </Badge>
                       ))}
@@ -285,27 +295,39 @@ const Heritage = () => {
                   </div>
                 </div>
 
-                <div className="relative">
+                {/* Enhanced Image Display */}
+                <div className="relative group">
                   {currentMilestone.hasImage ? (
-                    <div className="aspect-square bg-gradient-to-br from-secondary to-background rounded-lg border border-border/50 overflow-hidden">
+                    <div className="aspect-[4/3] bg-gradient-to-br from-secondary/20 to-background/30 rounded-2xl border border-border/50 overflow-hidden shadow-2xl group-hover:shadow-3xl transition-all duration-500 group-hover:scale-[1.02]">
                       <img
                         src={currentMilestone.imageSrc ?? heroImage}
                         alt={currentMilestone.imageAlt ?? currentMilestone.title}
-                        className="w-full h-full object-cover"
+                        className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700"
                         loading="lazy"
                         decoding="async"
+                        style={{
+                          imageRendering: 'auto'
+                        }}
                         onError={(e) => {
-                          // Swap to a guaranteed local asset if the public image is missing
                           if (e.currentTarget.src !== heroImage) {
                             e.currentTarget.src = heroImage;
                           }
                         }}
                       />
+                      {/* Image Overlay */}
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                      
+                      {/* Image Info Overlay */}
+                      <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/60 via-black/30 to-transparent p-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        <div className="text-white text-sm font-medium">
+                          {currentMilestone.imageAlt}
+                        </div>
+                      </div>
                     </div>
                   ) : (
-                    <div className="aspect-square bg-gradient-to-br from-secondary to-background rounded-lg border border-border/50 flex items-center justify-center overflow-hidden">
+                    <div className="aspect-[4/3] bg-gradient-to-br from-secondary/20 to-background/30 rounded-2xl border border-border/50 flex items-center justify-center overflow-hidden shadow-2xl">
                       <div className="text-center space-y-4 p-6">
-                        <div className="w-24 h-24 mx-auto bg-gradient-to-br from-accent/20 to-accent/10 rounded-full flex items-center justify-center">
+                        <div className="w-24 h-24 mx-auto bg-gradient-to-br from-accent/20 to-accent/10 rounded-full flex items-center justify-center shadow-lg">
                           <Car className="w-12 h-12 text-accent/40" />
                         </div>
                         <div className="text-6xl font-bold text-accent/20">{currentMilestone.year}</div>
@@ -314,7 +336,8 @@ const Heritage = () => {
                       </div>
                     </div>
                   )}
-                  <div className="absolute -top-2 -right-2 w-16 h-16 bg-gradient-to-br from-accent to-accent/60 rounded-full flex items-center justify-center text-white font-bold text-sm shadow-lg">
+                  {/* Enhanced Year Badge */}
+                  <div className="absolute -top-3 -right-3 w-20 h-20 bg-gradient-to-br from-accent via-accent/80 to-accent/60 rounded-full flex items-center justify-center text-white font-bold text-lg shadow-2xl border-4 border-background">
                     {currentMilestone.year}
                   </div>
                 </div>
@@ -323,58 +346,62 @@ const Heritage = () => {
           </Card>
         </div>
 
-        {/* Tech & Design Deep Dives */}
+        {/* Enhanced Tech & Design Deep Dives */}
         <div className="grid md:grid-cols-2 gap-8 mb-16">
-          <Card className="luxury-card group hover:shadow-[var(--shadow-luxury)] transition-all duration-500">
+          <Card className="luxury-card group hover:shadow-2xl transition-all duration-500 border-0 bg-gradient-to-br from-background via-secondary/5 to-background backdrop-blur-sm">
             <CardContent className="p-6">
               <div className="flex items-center gap-3 mb-4">
-                <div className="p-2 rounded-lg bg-accent/10 group-hover:bg-accent/20 transition-colors">
+                <div className="p-3 rounded-xl bg-gradient-to-br from-accent/20 to-accent/10 group-hover:bg-accent/30 transition-colors shadow-lg">
                   <Zap className="w-6 h-6 text-accent" />
                 </div>
-                <h4 className="text-xl font-semibold">Supercar Tech</h4>
+                <h4 className="text-xl font-semibold bg-gradient-to-r from-foreground to-accent bg-clip-text text-transparent">
+                  Supercar Tech
+                </h4>
               </div>
               <p className="text-muted-foreground mb-4">
                 Highlight the 959's innovations: AWD, active aero, twin turbo technology and motorsport results.
               </p>
-              <div className="space-y-2">
-                <div className="flex items-center gap-2 text-sm">
-                  <div className="w-2 h-2 rounded-full bg-accent" />
+              <div className="space-y-3">
+                <div className="flex items-center gap-3 text-sm">
+                  <div className="w-2 h-2 rounded-full bg-gradient-to-r from-accent to-accent/60 shadow-sm" />
                   All-Wheel Drive System
                 </div>
-                <div className="flex items-center gap-2 text-sm">
-                  <div className="w-2 h-2 rounded-full bg-accent" />
+                <div className="flex items-center gap-3 text-sm">
+                  <div className="w-2 h-2 rounded-full bg-gradient-to-r from-accent to-accent/60 shadow-sm" />
                   Adaptive Suspension
                 </div>
-                <div className="flex items-center gap-2 text-sm">
-                  <div className="w-2 h-2 rounded-full bg-accent" />
+                <div className="flex items-center gap-3 text-sm">
+                  <div className="w-2 h-2 rounded-full bg-gradient-to-r from-accent to-accent/60 shadow-sm" />
                   Twin-Turbo Technology
                 </div>
               </div>
             </CardContent>
           </Card>
 
-          <Card className="luxury-card group hover:shadow-[var(--shadow-luxury)] transition-all duration-500">
+          <Card className="luxury-card group hover:shadow-2xl transition-all duration-500 border-0 bg-gradient-to-br from-background via-secondary/5 to-background backdrop-blur-sm">
             <CardContent className="p-6">
               <div className="flex items-center gap-3 mb-4">
-                <div className="p-2 rounded-lg bg-accent/10 group-hover:bg-accent/20 transition-colors">
+                <div className="p-3 rounded-xl bg-gradient-to-br from-accent/20 to-accent/10 group-hover:bg-accent/30 transition-colors shadow-lg">
                   <Car className="w-6 h-6 text-accent" />
                 </div>
-                <h4 className="text-xl font-semibold">Design Homage</h4>
+                <h4 className="text-xl font-semibold bg-gradient-to-r from-foreground to-accent bg-clip-text text-transparent">
+                  Design Homage
+                </h4>
               </div>
               <p className="text-muted-foreground mb-4">
                 Detail how Porsche brings back vintage interior fabrics and colors via Heritage Design packages.
               </p>
-              <div className="space-y-2">
-                <div className="flex items-center gap-2 text-sm">
-                  <div className="w-2 h-2 rounded-full bg-accent" />
+              <div className="space-y-3">
+                <div className="flex items-center gap-3 text-sm">
+                  <div className="w-2 h-2 rounded-full bg-gradient-to-r from-accent to-accent/60 shadow-sm" />
                   Classic Color Revival
                 </div>
-                <div className="flex items-center gap-2 text-sm">
-                  <div className="w-2 h-2 rounded-full bg-accent" />
+                <div className="flex items-center gap-3 text-sm">
+                  <div className="w-2 h-2 rounded-full bg-gradient-to-r from-accent to-accent/60 shadow-sm" />
                   Pepita Tartan Patterns
                 </div>
-                <div className="flex items-center gap-2 text-sm">
-                  <div className="w-2 h-2 rounded-full bg-accent" />
+                <div className="flex items-center gap-3 text-sm">
+                  <div className="w-2 h-2 rounded-full bg-gradient-to-r from-accent to-accent/60 shadow-sm" />
                   Corduroy Interiors
                 </div>
               </div>
@@ -382,38 +409,38 @@ const Heritage = () => {
           </Card>
         </div>
 
-        {/* Heritage Stats */}
+        {/* Enhanced Heritage Stats */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-16">
-          <div className="text-center p-6 rounded-lg bg-gradient-to-br from-secondary/50 to-background/50 border border-border/30">
+          <div className="text-center p-6 rounded-2xl bg-gradient-to-br from-secondary/30 to-background/50 border border-border/30 backdrop-blur-sm hover:shadow-lg transition-all duration-300 hover:scale-105">
             <div className="text-3xl font-bold text-accent mb-2">75+</div>
             <div className="text-sm text-muted-foreground">Years of Excellence</div>
           </div>
-          <div className="text-center p-6 rounded-lg bg-gradient-to-br from-secondary/50 to-background/50 border border-border/30">
+          <div className="text-center p-6 rounded-2xl bg-gradient-to-br from-secondary/30 to-background/50 border border-border/30 backdrop-blur-sm hover:shadow-lg transition-all duration-300 hover:scale-105">
             <div className="text-3xl font-bold text-accent mb-2">19</div>
             <div className="text-sm text-muted-foreground">Le Mans Victories</div>
           </div>
-          <div className="text-center p-6 rounded-lg bg-gradient-to-br from-secondary/50 to-background/50 border border-border/30">
+          <div className="text-center p-6 rounded-2xl bg-gradient-to-br from-secondary/30 to-background/50 border border-border/30 backdrop-blur-sm hover:shadow-lg transition-all duration-300 hover:scale-105">
             <div className="text-3xl font-bold text-accent mb-2">1M+</div>
             <div className="text-sm text-muted-foreground">911s Produced</div>
           </div>
-          <div className="text-center p-6 rounded-lg bg-gradient-to-br from-secondary/50 to-background/50 border border-border/30">
+          <div className="text-center p-6 rounded-2xl bg-gradient-to-br from-secondary/30 to-background/50 border border-border/30 backdrop-blur-sm hover:shadow-lg transition-all duration-300 hover:scale-105">
             <div className="text-3xl font-bold text-accent mb-2">∞</div>
             <div className="text-sm text-muted-foreground">Innovation Legacy</div>
           </div>
         </div>
 
-        {/* Call to Action */}
+        {/* Enhanced Call to Action */}
         <div className="text-center">
           <div className="inline-flex flex-col sm:flex-row gap-4 items-center">
-            <Button size="lg" className="bg-accent hover:bg-accent/90 text-accent-foreground shadow-lg">
+            <Button size="lg" className="bg-gradient-to-r from-accent to-accent/80 hover:from-accent/90 hover:to-accent text-accent-foreground shadow-2xl hover:shadow-accent/25 transition-all duration-300 hover:scale-105">
               From Heritage to Innovation
             </Button>
-            <span className="text-muted-foreground">→</span>
-            <Button variant="outline" size="lg" className="hover:bg-accent hover:text-accent-foreground">
+            <span className="text-muted-foreground text-xl">→</span>
+            <Button variant="outline" size="lg" className="hover:bg-accent hover:text-accent-foreground border-accent/30 hover:border-accent transition-all duration-300 hover:scale-105">
               Discover Models
             </Button>
-            <span className="text-muted-foreground">→</span>
-            <Button variant="outline" size="lg" className="hover:bg-accent hover:text-accent-foreground">
+            <span className="text-muted-foreground text-xl">→</span>
+            <Button variant="outline" size="lg" className="hover:bg-accent hover:text-accent-foreground border-accent/30 hover:border-accent transition-all duration-300 hover:scale-105">
               Explore Strategy
             </Button>
           </div>

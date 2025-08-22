@@ -26,17 +26,6 @@ const Footer = () => {
           </div>
           
           <div>
-            <h4 className="font-semibold mb-4">Services</h4>
-            <ul className="space-y-2 text-muted-foreground">
-              <li><a href="#" className="hover:text-foreground transition-colors">Porsche Service</a></li>
-              <li><a href="#" className="hover:text-foreground transition-colors">Porsche Approved</a></li>
-              <li><a href="#" className="hover:text-foreground transition-colors">Financing</a></li>
-              <li><a href="#" className="hover:text-foreground transition-colors">Insurance</a></li>
-              <li><a href="#" className="hover:text-foreground transition-colors">Accessories</a></li>
-            </ul>
-          </div>
-          
-          <div>
             <h4 className="font-semibold mb-4">Company</h4>
             <ul className="space-y-2 text-muted-foreground">
               <li><a href="#" className="hover:text-foreground transition-colors">About Porsche</a></li>
