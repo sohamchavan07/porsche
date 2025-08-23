@@ -13,9 +13,6 @@ const Header = () => {
               <a href="#heritage" className="text-foreground/80 hover:text-foreground transition-colors">Heritage</a>
             </div>
           </div>
-          <div className="flex items-center space-x-4">
-            <Button variant="ghost" className="hidden md:inline-flex">Configure</Button>
-          </div>
         </nav>
       </div>
     </header>
