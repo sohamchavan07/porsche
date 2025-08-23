@@ -1,7 +1,11 @@
+import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import heroImage from "@/assets/porsche-hero.jpg";
+import ImageGalleryModal from "./ImageGalleryModal";
 
 const Hero = () => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
   return (
     <section className="hero-section relative min-h-screen flex items-center justify-center overflow-hidden">
       {/* Background Image */}
@@ -29,6 +33,7 @@ const Hero = () => {
             <Button
               size="lg"
               className="bg-primary hover:bg-primary/90 text-primary-foreground px-8 py-6 text-lg"
+              onClick={() => setIsModalOpen(true)}
             >
               Explore Models
             </Button>
@@ -42,6 +47,12 @@ const Hero = () => {
           <div className="w-1 h-3 bg-foreground/60 rounded-full mt-2 animate-pulse"></div>
         </div>
       </div>
+
+      {/* Image Gallery Modal */}
+      <ImageGalleryModal 
+        isOpen={isModalOpen} 
+        onClose={() => setIsModalOpen(false)} 
+      />
     </section>
   );
 };
