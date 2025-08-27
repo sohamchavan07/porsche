@@ -9,21 +9,21 @@ const models = [
     category: "Track Performance",
     description: "The ultimate expression of motorsport technology for the road.",
     specs: { power: "518 HP", acceleration: "3.2s", topSpeed: "184 mph" },
-    image: "/heritage/911.jpeg"
+    image: "/heritage/911 GT3 RS.jpeg"
   },
   {
     name: "Taycan Turbo S",
     category: "Electric Performance",
     description: "Soul-stirring performance meets sustainable innovation.",
     specs: { power: "761 HP", acceleration: "2.6s", range: "227 mi" },
-    image: "/heritage/Taycan.jpeg"
+    image: "/heritage/Taycan Turbo S.jpeg"
   },
   {
     name: "Cayenne Turbo GT",
     category: "Performance SUV",
     description: "The fastest SUV to bear the Porsche crest.",
     specs: { power: "631 HP", acceleration: "3.1s", topSpeed: "186 mph" },
-    image: "/heritage/Cayenne.jpeg"
+    image: "/heritage/Cayenne Turbo GT.jpeg"
   }
 ];
 
