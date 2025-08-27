@@ -3,6 +3,7 @@ import heroImage from "@/assets/porsche-hero.jpg";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
+import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
 import { ChevronLeft, ChevronRight, Calendar, Trophy, Car, Zap, Star, Award, Sparkles } from "lucide-react";
 
 interface HeritageMilestone {
@@ -155,6 +156,9 @@ const heritageData: HeritageMilestone[] = [
 
 const Heritage = () => {
   const [activeMilestone, setActiveMilestone] = useState(0);
+  const [isHeritageOpen, setIsHeritageOpen] = useState(false);
+  const [isModelsOpen, setIsModelsOpen] = useState(false);
+  const [isStrategyOpen, setIsStrategyOpen] = useState(false);
 
   const nextMilestone = () => {
     setActiveMilestone((prev) => (prev + 1) % heritageData.length);
@@ -432,17 +436,156 @@ const Heritage = () => {
         {/* Enhanced Call to Action */}
         <div className="text-center">
           <div className="inline-flex flex-col sm:flex-row gap-4 items-center">
-            <Button size="lg" className="bg-gradient-to-r from-accent to-accent/80 hover:from-accent/90 hover:to-accent text-accent-foreground shadow-2xl hover:shadow-accent/25 transition-all duration-300 hover:scale-105">
-              From Heritage to Innovation
-            </Button>
+            <Dialog open={isHeritageOpen} onOpenChange={setIsHeritageOpen}>
+              <DialogTrigger asChild>
+                <Button size="lg" className="bg-gradient-to-r from-accent to-accent/80 hover:from-accent/90 hover:to-accent text-accent-foreground shadow-2xl hover:shadow-accent/25 transition-all duration-300 hover:scale-105">
+                  From Heritage to Innovation
+                </Button>
+              </DialogTrigger>
+              <DialogContent className="max-w-4xl max-h-[90vh] overflow-hidden">
+                <div className="space-y-6">
+                  <div className="text-center">
+                    <h3 className="text-3xl font-bold gradient-text mb-4">From Heritage to Innovation</h3>
+                    <p className="text-lg text-muted-foreground">
+                      The journey that shaped automotive history
+                    </p>
+                  </div>
+                  
+                  <div className="grid md:grid-cols-2 gap-6">
+                    <div className="space-y-4">
+                      <h4 className="text-xl font-semibold">Our Foundation</h4>
+                      <p className="text-muted-foreground">
+                        Founded in 1948 by Ferdinand Porsche, our company began with a simple vision: to create the perfect sports car. The 356 'No. 1' Roadster was born in Gmünd, Austria, marking the true beginning of the Porsche brand.
+                      </p>
+                      
+                      <h4 className="text-xl font-semibold">Racing Heritage</h4>
+                      <p className="text-muted-foreground">
+                        From the 917's Le Mans victory to our 19 overall wins, racing has always been our proving ground. Every innovation on the track finds its way to our road cars.
+                      </p>
+                    </div>
+                    
+                    <div className="space-y-4">
+                      <h4 className="text-xl font-semibold">Innovation Timeline</h4>
+                      <p className="text-muted-foreground">
+                        1963: 911 debut with evolutionary design philosophy<br/>
+                        1974: First production turbocharged car<br/>
+                        1986: 959 'Wundercar' with AWD and active aero<br/>
+                        2019: Taycan - electric performance redefined
+                      </p>
+                      
+                      <h4 className="text-xl font-semibold">Future Vision</h4>
+                      <p className="text-muted-foreground">
+                        We continue to push boundaries with sustainable mobility, autonomous driving, and digital innovation while preserving the driving experience that makes a Porsche unique.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </DialogContent>
+            </Dialog>
+            
             <span className="text-muted-foreground text-xl">→</span>
-            <Button variant="outline" size="lg" className="hover:bg-accent hover:text-accent-foreground border-accent/30 hover:border-accent transition-all duration-300 hover:scale-105">
-              Discover Models
-            </Button>
+            
+            <Dialog open={isModelsOpen} onOpenChange={setIsModelsOpen}>
+              <DialogTrigger asChild>
+                <Button variant="outline" size="lg" className="hover:bg-accent hover:text-accent-foreground border-accent/30 hover:border-accent transition-all duration-300 hover:scale-105">
+                  Discover Models
+                </Button>
+              </DialogTrigger>
+              <DialogContent className="max-w-4xl max-h-[90vh] overflow-hidden">
+                <div className="space-y-6">
+                  <div className="text-center">
+                    <h3 className="text-3xl font-bold gradient-text mb-4">Discover Our Models</h3>
+                    <p className="text-lg text-muted-foreground">
+                      From iconic sports cars to luxury SUVs
+                    </p>
+                  </div>
+                  
+                  <div className="grid md:grid-cols-2 gap-6">
+                    <div className="space-y-4">
+                      <h4 className="text-xl font-semibold">Sports Cars</h4>
+                      <p className="text-muted-foreground">
+                        <strong>911:</strong> The iconic sports car that defines performance<br/>
+                        <strong>718:</strong> Mid-engine excellence in Boxster and Cayman<br/>
+                        <strong>918:</strong> Hybrid hypercar technology showcase
+                      </p>
+                      
+                      <h4 className="text-xl font-semibold">Electric Performance</h4>
+                      <p className="text-muted-foreground">
+                        <strong>Taycan:</strong> Electric performance without compromise<br/>
+                        <strong>Macan EV:</strong> Next-generation electric SUV<br/>
+                        <strong>Future Concepts:</strong> Vision 357 and beyond
+                      </p>
+                    </div>
+                    
+                    <div className="space-y-4">
+                      <h4 className="text-xl font-semibold">Luxury SUVs</h4>
+                      <p className="text-muted-foreground">
+                        <strong>Cayenne:</strong> Performance SUV with sports car DNA<br/>
+                        <strong>Macan:</strong> Compact luxury with dynamic handling<br/>
+                        <strong>Panamera:</strong> Four-door sports car luxury
+                      </p>
+                      
+                      <h4 className="text-xl font-semibold">Special Editions</h4>
+                      <p className="text-muted-foreground">
+                        Heritage Design packages, GT models, and exclusive limited editions that celebrate our racing heritage and design excellence.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </DialogContent>
+            </Dialog>
+            
             <span className="text-muted-foreground text-xl">→</span>
-            <Button variant="outline" size="lg" className="hover:bg-accent hover:text-accent-foreground border-accent/30 hover:border-accent transition-all duration-300 hover:scale-105">
-              Explore Strategy
-            </Button>
+            
+            <Dialog open={isStrategyOpen} onOpenChange={setIsStrategyOpen}>
+              <DialogTrigger asChild>
+                <Button variant="outline" size="lg" className="hover:bg-accent hover:text-accent-foreground border-accent/30 hover:border-accent transition-all duration-300 hover:scale-105">
+                  Explore Strategy
+                </Button>
+              </DialogTrigger>
+              <DialogContent className="max-w-4xl max-h-[90vh] overflow-hidden">
+                <div className="space-y-6">
+                  <div className="text-center">
+                    <h3 className="text-3xl font-bold gradient-text mb-4">Explore Our Strategy</h3>
+                    <p className="text-lg text-muted-foreground">
+                      Shaping the future of mobility
+                    </p>
+                  </div>
+                  
+                  <div className="grid md:grid-cols-2 gap-6">
+                    <div className="space-y-4">
+                      <h4 className="text-xl font-semibold">Sustainability</h4>
+                      <p className="text-muted-foreground">
+                        We're committed to carbon neutrality by 2030. Our strategy includes electrification, sustainable materials, and renewable energy in production.
+                      </p>
+                      
+                      <h4 className="text-xl font-semibold">Digital Transformation</h4>
+                      <p className="text-muted-foreground">
+                        From connected vehicles to digital services, we're embracing technology to enhance the driving experience while maintaining our core values.
+                      </p>
+                    </div>
+                    
+                    <div className="space-y-4">
+                      <h4 className="text-xl font-semibold">Innovation Focus</h4>
+                      <p className="text-muted-foreground">
+                        Our R&D centers worldwide work on autonomous driving, artificial intelligence, and next-generation powertrains that will define the future of mobility.
+                      </p>
+                      
+                      <h4 className="text-xl font-semibold">Customer Experience</h4>
+                      <p className="text-muted-foreground">
+                        We're redefining luxury through personalized experiences, digital platforms, and seamless integration between online and offline touchpoints.
+                      </p>
+                    </div>
+                  </div>
+                  
+                  <div className="text-center pt-4">
+                    <p className="text-sm text-muted-foreground">
+                      "There is no substitute" - This philosophy drives our strategic decisions and innovation roadmap.
+                    </p>
+                  </div>
+                </div>
+              </DialogContent>
+            </Dialog>
           </div>
         </div>
       </div>
