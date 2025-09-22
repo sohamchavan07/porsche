@@ -32,14 +32,7 @@ const ImageGalleryModal = ({ isOpen, onClose }: ImageGalleryModalProps) => {
           <DialogTitle className="text-2xl font-bold text-center mb-6">
             Explore Porsche Heritage
           </DialogTitle>
-          <Button
-            variant="ghost"
-            size="icon"
-            className="absolute right-4 top-4"
-            onClick={onClose}
-          >
-            <X className="h-4 w-4" />
-          </Button>
+         
         </DialogHeader>
         
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -69,14 +62,7 @@ const ImageGalleryModal = ({ isOpen, onClose }: ImageGalleryModalProps) => {
           <Dialog open={!!selectedImage} onOpenChange={() => setSelectedImage(null)}>
             <DialogContent className="max-w-4xl">
               <DialogHeader>
-                <Button
-                  variant="ghost"
-                  size="icon"
-                  className="absolute right-4 top-4"
-                  onClick={() => setSelectedImage(null)}
-                >
-                  <X className="h-4 w-4" />
-                </Button>
+             
               </DialogHeader>
               <div className="flex justify-center">
                 <img
