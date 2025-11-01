@@ -384,7 +384,19 @@ const Footer = () => {
         </div>
         
         <div className="pt-8 border-t border-border/50 flex flex-col md:flex-row justify-between items-center text-sm text-muted-foreground">
-          <p>&copy; 2025 CaseStudy Porsche. All rights reserved.</p>
+       <p>
+            &copy; 2025 CaseStudy Porsche. Educational purpose Made by{" "}
+            <a
+              href="https://www.sohamchavan.site"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Soham Chavan website"
+              className="text-red-600 hover:text-red-500 font-semibold hover:underline focus:outline-none focus:ring-2 focus:ring-red-300"
+            >
+              SOHAM
+            </a>
+            .
+          </p>
           <div className="flex space-x-6 mt-4 md:mt-0">
             <a href="#" className="hover:text-foreground transition-colors">Privacy Policy</a>
             <a href="#" className="hover:text-foreground transition-colors">Terms of Service</a>
